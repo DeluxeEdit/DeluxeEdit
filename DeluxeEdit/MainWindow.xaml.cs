@@ -25,6 +25,7 @@ public partial class MainWindow : Window
 
         SizeToContent = SizeToContent.Width;
         var mySettings = new MySettings();
+        MinWidth = 300;
          Title= mySettings.AppInfo.ToString();
 
     }
