@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace DeluxeEdit
 {
-    public class ReadSettings
+    public class MySettings
     {
         public AppInfo AppInfo { get; set; } = SystemConstants.GetAppInfo();
         public string? CurrentEnvironment { get; } = ConfigurationManager.AppSettings["CurrentEnvironment"];
-        public ReadSettings()
+        public MySettings()
         {
             if (CurrentEnvironment != null)
             {

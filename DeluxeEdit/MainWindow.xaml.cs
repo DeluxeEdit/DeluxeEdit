@@ -24,6 +24,8 @@ public partial class MainWindow : Window
         Content = new MainEdit();
 
         SizeToContent = SizeToContent.Width;
+        var mySettings = new MySettings();
+         Title= mySettings.AppInfo.ToString();
 
     }
 }
