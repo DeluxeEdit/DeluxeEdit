@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewModel", "ViewModel\View
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeluxeEdit", "DeluxeEdit\DeluxeEdit.csproj", "{381BB341-9A6B-4DE6-9238-C801F3C7A043}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{0AB7FE8B-4576-4693-9E9D-D09B763E3B72}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +75,10 @@ Global
 		{381BB341-9A6B-4DE6-9238-C801F3C7A043}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{381BB341-9A6B-4DE6-9238-C801F3C7A043}.Production|Any CPU.ActiveCfg = Release|Any CPU
 		{381BB341-9A6B-4DE6-9238-C801F3C7A043}.Production|Any CPU.Build.0 = Release|Any CPU
+		{0AB7FE8B-4576-4693-9E9D-D09B763E3B72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AB7FE8B-4576-4693-9E9D-D09B763E3B72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AB7FE8B-4576-4693-9E9D-D09B763E3B72}.Production|Any CPU.ActiveCfg = Release|Any CPU
+		{0AB7FE8B-4576-4693-9E9D-D09B763E3B72}.Production|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -87,6 +93,7 @@ Global
 		{A9D5B838-743E-4B87-B853-1709F01245CA} = {AD342BAA-5996-4184-B197-9192E5666B17}
 		{F794742A-268A-46D8-9776-3E5F11EC5EBD} = {60EC0C27-B490-4A9E-B94F-53B76B99A4CF}
 		{381BB341-9A6B-4DE6-9238-C801F3C7A043} = {AD342BAA-5996-4184-B197-9192E5666B17}
+		{0AB7FE8B-4576-4693-9E9D-D09B763E3B72} = {AD342BAA-5996-4184-B197-9192E5666B17}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DCBEF9C5-A446-4A62-B058-1E17441EDCC9}
