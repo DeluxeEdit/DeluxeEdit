@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Web.Models;
-
-namespace Webs.Models
+﻿
+namespace Constants
 {
     public class AppInfo
     {

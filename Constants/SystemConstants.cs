@@ -1,7 +1,5 @@
-﻿using Web.Models;
-using Webs.Models;
-
-namespace Web.Models{
+﻿namespace Constants
+{ 
     public class SystemConstants
     {
         public const char NullCharacter = '\0';

@@ -1,5 +1,4 @@
-﻿using Web.Models;
-using Webs.Models;
+﻿using Constants;
 namespace Web
 {
     public class MySettings
