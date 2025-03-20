@@ -48,6 +48,7 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\ApiNew\CustomFileApi.csproj" />
+	  <ProjectReference Include="..\Constants\Constants.csproj" />
 	  <ProjectReference Include="..\Exensions\Exensions.csproj" />
 	  <ProjectReference Include="..\Model\Model.csproj" />
 	  <ProjectReference Include="..\Shared\Shared.csproj" />

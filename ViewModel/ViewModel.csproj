@@ -32,6 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Constants\Constants.csproj" />
     <ProjectReference Include="..\DefaultPlugins\DefaultPlugins.csproj" />
     <ProjectReference Include="..\Model\Model.csproj" />
   </ItemGroup>

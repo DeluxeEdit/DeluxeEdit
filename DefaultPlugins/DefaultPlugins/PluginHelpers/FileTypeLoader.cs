@@ -29,14 +29,14 @@ namespace DefaultPlugins.PluginHelpers
         public TextArea CurrentArea { get; set; } = new TextEditor().TextArea;
         public FileTypeLoader()
         {
-            /*
+            
             var registration = new HighlightingRegistrationItem();
             registration.Name = "LogFile";
             registration.Extensions.Add(".log");
             registration.PathToDefinition = "./DefaultPlugins/PluginHelpers/LogFileDefinition.xshd";
       LoadDefinitionFromFile(registration);
             RegisterDefinition(registration);
-            */
+            
         }
 
 
