@@ -2,6 +2,7 @@
 { 
     public class SystemConstants
     {
+        public const string GithubProjectUrl = "https://github.com/DeluxeEdit/DeluxeEdit";
         public const char NullCharacter = '\0';
         public const Char ControlKey = (char)136;
         public const int ReadPortionBufferSizeLines = 8;

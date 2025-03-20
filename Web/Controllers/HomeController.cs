@@ -9,8 +9,11 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        
         var settings = new MySettings();
         ViewData["Title"]=settings.AppInfo.ToString();
+
+        ViewData["GithubUrl"] = Constants.SystemConstants.GithubProjectUrl;                                          ;
         return View();
     }
 
