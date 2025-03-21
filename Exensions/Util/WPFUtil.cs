@@ -1,4 +1,5 @@
 ﻿using Model;
+using System.Diagnostics;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
@@ -10,12 +11,22 @@ namespace Extensions.Util
     public  static class WPFUtil
     {
 
-        private static Action EmptyDelegate = delegate () { };
-        
-
-        public static void RefreshUI(UIElement uiElement)
+        public static string ShellExecuteWithOutput(string command)
         {
-            uiElement.Dispatcher.Invoke(DispatcherPriority.Render, EmptyDelegate);
+            Process p = new Process();
+
+            // Redirect the output stream of the child process.
+            p.StartInfo.UseShellExecute = false;
+            p.StartInfo.RedirectStandardOutput = true;
+            p.StartInfo.FileName = command;
+            p.Start();
+            // Do not wait for the child process to exit before
+            // reading to the end of its redirected stream.
+            // p.WaitForExit();
+            // Read the output stream first and then wait.
+            string result = p.StandardOutput.ReadToEnd();
+            p.WaitForExit();
+            return result;
         }
         public static MenuItem? GetMenuItemForStartText(MenuItem menuItem, string startText)
         {

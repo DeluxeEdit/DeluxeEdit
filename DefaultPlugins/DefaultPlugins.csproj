@@ -6,7 +6,7 @@
 		<Nullable>enable</Nullable>
 		<EnableDefaultCompileItems>false</EnableDefaultCompileItems>
 		<UseWPF>true</UseWPF>
-		<Version>0.0.1</Version>
+		<Version>1.0</Version>
 		<Title>A List of  nuget defaullt plugins for DeluxeEdit</Title>
 		<Authors>Pierre Axelsson</Authors>
 		<Company>Pierre Axelsson</Company>
@@ -14,6 +14,8 @@
 		<UserSecretsId>b129b379-a295-4367-a3e3-7aae961e7337</UserSecretsId>
 		<UseWindowsForms>true</UseWindowsForms>
 		<Configurations>Debug;Release;Production</Configurations>
+		<PackageId>$(AssemblyName)</PackageId>
+		<AssemblyName>DeluxeEdit-$(MSBuildProjectName)</AssemblyName>
 	</PropertyGroup>
 
 	<ItemGroup>
