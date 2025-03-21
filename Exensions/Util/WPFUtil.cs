@@ -11,7 +11,7 @@ namespace Extensions.Util
     public  static class WPFUtil
     {
 
-        public static string ShellExecuteWithOutput(string command)
+        public static IEnumerable<string> ShellExecuteWithOutput(string command)
         {
             Process p = new Process();
 
@@ -26,8 +26,8 @@ namespace Extensions.Util
             // Read the output stream first and then wait.
             string result = p.StandardOutput.ReadToEnd();
             p.WaitForExit();
-            return result;
-        }
+            return result.Split(Environment.NewLine, ' ');
+         }
         public static MenuItem? GetMenuItemForStartText(MenuItem menuItem, string startText)
         {
             MenuItem? result = null;

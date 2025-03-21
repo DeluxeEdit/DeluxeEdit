@@ -1,5 +1,6 @@
 ﻿using Constants;
 using Extensions;
+using Extensions.Util;
 using Model;
 using System.Data;
 using System.IO;
@@ -20,7 +21,13 @@ namespace Shared
 
         }
 
-        
+        public static List<PluginItem> GetPluginsRemote()
+        {
+           var oututItems= WPFUtil.ShellExecuteWithOutput($"nuget.exe search {SystemConstants.NugetPackageStartName} ");
+            //var items = file.MatchingTypes.Select(p => file.LocalPath.CreatePluginItem(file.Version, p)).ToList();
+            throw new System.NotImplementedException();
+        }
+
         public static List<PluginItem> GetPluginsLocal()
         {
             var files = PluginManager.LoadFiles();
