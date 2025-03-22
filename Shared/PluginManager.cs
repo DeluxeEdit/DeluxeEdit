@@ -19,11 +19,16 @@ namespace Shared
         {
             LoadFiles();
 
+            GetPluginsRemote();
+
         }
 
         public static List<PluginItem> GetPluginsRemote()
         {
-           var oututItems= WPFUtil.ShellExecuteWithOutput($"nuget.exe search {SystemConstants.NugetPackageStartName} ");
+            
+            var oututItems = WPFUtil.ShellExecuteWithOutput($"nuget.exe", "search 1").ToList();
+            var chosen=oututItems.Where(p=>p.StartsWith(">")).Select(p => p.Substring(1)).ToList();
+            //var oututItems = WPFUtil.ShellExecuteWithOutput($"nuget.exe search {SystemConstants.NugetPackageStartName} ");
             //var items = file.MatchingTypes.Select(p => file.LocalPath.CreatePluginItem(file.Version, p)).ToList();
             throw new System.NotImplementedException();
         }

@@ -11,14 +11,15 @@ namespace Extensions.Util
     public  static class WPFUtil
     {
 
-        public static IEnumerable<string> ShellExecuteWithOutput(string command)
+        public static IEnumerable<string> ShellExecuteWithOutput(string fileName, string argumets)
         {
             Process p = new Process();
 
             // Redirect the output stream of the child process.
             p.StartInfo.UseShellExecute = false;
             p.StartInfo.RedirectStandardOutput = true;
-            p.StartInfo.FileName = command;
+            p.StartInfo.FileName = fileName;
+            p.StartInfo.Arguments = argumets;
             p.Start();
             // Do not wait for the child process to exit before
             // reading to the end of its redirected stream.
@@ -26,7 +27,7 @@ namespace Extensions.Util
             // Read the output stream first and then wait.
             string result = p.StandardOutput.ReadToEnd();
             p.WaitForExit();
-            return result.Split(Environment.NewLine, ' ');
+            return result.Split(Environment.NewLine);
          }
         public static MenuItem? GetMenuItemForStartText(MenuItem menuItem, string startText)
         {
