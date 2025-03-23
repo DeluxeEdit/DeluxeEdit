@@ -54,9 +54,10 @@ namespace Extensions
         {
             return long.Parse(item);
         }
-        public static int? IndexOfDigit(this string item, int pos = 0)
+        public static int IndexOfDigit(this string item, int pos = 0)
         {
-            int? result = null;
+
+            int result = -1;
             var input = item.Substring(pos);
             for (int i = 0; i < input.Length; i++)
             {
@@ -69,21 +70,21 @@ namespace Extensions
             return result;
         }
 
-        public static int? LastIndexOfDigit(this string item, int pos = 0)
+        public static int LastIndexOfDigit(this string item, int pos = 0)
         {
-            int? result = null;
+            int result = -1;
             var input = item.Substring(pos);
-             for (int i = input.Length-1; i > 0 ; i--)
+            for (int i = input.Length - 1; i > 0; i--)
             {
                 if (Char.IsDigit(input[i]))
-               {
+                {
                     result = i;
                     break;
                 }
             }
+
             return result;
         }
-
         public static void ForEach<T>(this IEnumerable<T> enumeration, Action<T> action)
         {
             foreach (T item in enumeration)

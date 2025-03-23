@@ -9,7 +9,8 @@ namespace Model
         public Type PluginType { get; set; } = typeof(PluginItem);
 
         public string Id { get; set; } = String.Empty;
-        public Version FileVersion { get; set; }= new Version();
+        public Version FileVersion  { get; set; }=new Version();
+     
         public bool Enabled { get; set; }
         public string FilePath { get; set; } = String.Empty;
 

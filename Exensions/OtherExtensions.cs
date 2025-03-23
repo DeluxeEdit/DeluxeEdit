@@ -6,7 +6,7 @@ namespace Extensions
     public static class OtherExtensions
     {
     
-
+/*        
         public static PluginFile ParseNugetFileName(this string path)
         {
             var result = new PluginFile();
@@ -15,7 +15,7 @@ namespace Extensions
             var index = StringExtenssions.IndexOfDigit(path);
             var lastIndex = StringExtenssions.LastIndexOfDigit(path);
             result.Name = Path.GetFileNameWithoutExtension(new FileInfo(path).Name);
-            if (index.HasValue && lastIndex.HasValue)
+          /*  if (index.HasValue && lastIndex.Has Value)
             {
                 result.Version = Version.Parse(StringExtenssions.SubstringPos(path, index.Value, lastIndex.Value));
                 result.Name= Path.GetFileNameWithoutExtension(StringExtenssions.SubstringPos(path, 0, index.Value-2));

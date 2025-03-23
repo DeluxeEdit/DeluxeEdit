@@ -3,6 +3,7 @@ using Extensions;
 using Extensions.Util;
 using Model;
 using System.Data;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 
@@ -25,12 +26,23 @@ namespace Shared
 
         public static List<PluginItem> GetPluginsRemote()
         {
-            
-            var oututItems = WPFUtil.ShellExecuteWithOutput($"nuget.exe", "search 1").ToList();
-            var chosen=oututItems.Where(p=>p.StartsWith(">")).Select(p => p.Substring(1)).ToList();
+            var outputItems = WPFUtil.ShellExecuteWithOutput($"nuget.exe", "search 1").ToList();
+            var wanted=outputItems.Where(p=>p.StartsWith(">")).Select(p => p.Substring(1).Trim() ).ToList();
+            var result=wanted.Where(p => p.IndexOfDigit() >=0).Select(p =>
+            new PluginItem
+            {
+                FileVersion= Version.Parse(p.SubstringPos(p.IndexOfDigit(), p.LastIndexOfDigit())),
+                Id =  p.SubstringPos(0, p.IndexOfDigit()  - 1)
+
+                
+
+
+
+            }
+            ).ToList();
             //var oututItems = WPFUtil.ShellExecuteWithOutput($"nuget.exe search {SystemConstants.NugetPackageStartName} ");
-            //var items = file.MatchingTypes.Select(p => file.LocalPath.CreatePluginItem(file.Version, p)).ToList();
-            throw new System.NotImplementedException();
+            //var items = file.MatchingTypes.Select(p => file.LocalPath.CreatePluginItem(file.Version, p)).ToList  
+            return result;
         }
 
         public static List<PluginItem> GetPluginsLocal()
