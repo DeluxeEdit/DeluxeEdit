@@ -26,22 +26,30 @@ namespace Shared
 
         public static List<PluginItem> GetPluginsRemote()
         {
+            var result = new List<PluginItem>();
             var outputItems = WPFUtil.ShellExecuteWithOutput($"nuget.exe", "search 1").ToList();
-            var wanted=outputItems.Where(p=>p.StartsWith(">")).Select(p => p.Substring(1).Trim() ).ToList();
-            var result=wanted.Where(p => p.IndexOfDigit() >=0).Select(p =>
-            new PluginItem
+            var wanted = outputItems.Where(p => p.StartsWith(">")).Select(p => p.Substring(1).Trim()).ToList();
+            foreach (string read in wanted)
             {
-                FileVersion= Version.Parse(p.SubstringPos(p.IndexOfDigit(), p.LastIndexOfDigit())),
-                Id =  p.SubstringPos(0, p.IndexOfDigit()  - 1)
+                var splitted = read.Split("|");
+                var name = splitted[0].Trim(); ;
+                var ver = splitted[1].Trim(); ;
+                //read    "runtime.opensuse.13.2-x64.runtime.native.System.Security.Cryptography.OpenSsl | 4.3.3 | Downloads: 1ÿ959ÿ016ÿ175"  string
 
-                
+                result.Add(
+                    new PluginItem
+                    {
+                        Id = name,
 
+                        FileVersion = Version.Parse(ver)
 
-
+                    }
+                );
             }
-            ).ToList();
-            //var oututItems = WPFUtil.ShellExecuteWithOutput($"nuget.exe search {SystemConstants.NugetPackageStartName} ");
-            //var items = file.MatchingTypes.Select(p => file.LocalPath.CreatePluginItem(file.Version, p)).ToList  
+
+
+
+
             return result;
         }
 

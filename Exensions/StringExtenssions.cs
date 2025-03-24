@@ -21,15 +21,32 @@ namespace Extensions
         {
             var result = new StringBuilder();
 
-            for (int i = startIndex; i<= lastIndex && i<s.Length; i++)
+            for (int i = startIndex; i <= lastIndex && i < s.Length; i++)
             {
                 result.Append(s[i]);
             }
 
-              
+
             return result.ToString();
-        } 
-          
+        }
+
+        public static string WhileAlDigits(this string input, int startIndex)
+        {
+            var result = new StringBuilder();
+
+            for (int i = startIndex; i <=   input.Length; i++)
+            {
+                var c = input[startIndex];
+                if (Char.IsDigit(c))
+                    result.Append(c);
+                else
+                    break;
+
+            }
+            return result.ToString();
+
+        }
+
         public static bool SameFileName(this string a, string b)
         {
             var filea = new FileInfo(a);    
@@ -38,7 +55,7 @@ namespace Extensions
 
             return result;
         }
-        public static bool IsEmpty(this string? item)
+        public static bool IsEmpty(this string item)
         {
             return String.IsNullOrEmpty(item);
         }
