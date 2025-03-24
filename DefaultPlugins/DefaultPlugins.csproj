@@ -63,5 +63,8 @@
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </None>
 	</ItemGroup>
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+	  <Exec Command="powershell cp -Force $(ProjectDir)$(OutDir)*. " />
+	</Target>
 
 </Project>
