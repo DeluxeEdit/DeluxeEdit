@@ -27,7 +27,7 @@ namespace Shared
         public static List<PluginItem> GetPluginsRemote()
         {
             var result = new List<PluginItem>();
-            var outputItems = WPFUtil.ShellExecuteWithOutput($"nuget.exe", "search 1").ToList();
+            var outputItems = WPFUtil.ShellExecuteWithOutput("nuget.exe", $"search {SystemConstants.NugetPackageStartName}").ToList();
             var wanted = outputItems.Where(p => p.StartsWith(">")).Select(p => p.Substring(1).Trim()).ToList();
             foreach (string read in wanted)
             {
@@ -42,7 +42,7 @@ namespace Shared
                         Id = name,
 
                         FileVersion = Version.Parse(ver)
-
+                        
                     }
                 );
             }
@@ -51,6 +51,16 @@ namespace Shared
 
 
             return result;
+        }
+        public static void NugetInstallMyPackages()
+        {
+            var myPlugins = GetPluginsRemote();
+            foreach (var plugin in myPlugins) 
+                WPFUtil.ShellExecuteWithOutput("nuget.exe", $"install´{plugin.Id}").ToList();
+            
+
+
+
         }
 
         public static List<PluginItem> GetPluginsLocal()

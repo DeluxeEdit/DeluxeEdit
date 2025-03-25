@@ -6,6 +6,8 @@ namespace DeluxeEdit
     public class MySettings
     {
         public AppInfo AppInfo { get; set; } = SystemConstants.GetAppInfo();
+       // ConfigurationBuilder builder= new ConfigurationBuilder().AddXmlFile();
+           
         public string? CurrentEnvironment { get; } = ConfigurationManager.AppSettings["CurrentEnvironment"];
         public MySettings()
         {
@@ -16,7 +18,7 @@ namespace DeluxeEdit
                 var appInfo = SystemConstants.GetAppInfo();
                 appInfo.Environment = parsed;
                 AppInfo = appInfo;
-                Environment.SetEnvironmentVariable("CurrentEnvironment", CurrentEnvironment);
+                Environment.SetEnvironmentVariable("CurrentEnvironment", CurrentEnvironment, EnvironmentVariableTarget.Process );
             }
         }
 

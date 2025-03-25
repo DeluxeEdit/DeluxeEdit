@@ -9,6 +9,14 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Optimize>False</Optimize>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <Optimize>False</Optimize>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.SlowCheetah" Version="4.0.50">
       <PrivateAssets>all</PrivateAssets>
@@ -37,9 +45,5 @@
       <DependentUpon>App.config</DependentUpon>
     </None>
   </ItemGroup>
-
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="powershell cp -Force $(ProjectDir)$(OutDir)*.dll $env:ProgramFiles\DeluxeEdit&#xD;&#xA;powershell cp -Force $(ProjectDir)$(OutDir)*Plugin*.dll $env:ProgramFiles\DeluxeEdit\plugins" />
-  </Target>
 
 </Project>
