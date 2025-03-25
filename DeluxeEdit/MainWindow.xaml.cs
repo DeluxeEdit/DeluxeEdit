@@ -24,7 +24,7 @@ public partial class MainWindow : Window
         Content = new MainEdit();
 
         SizeToContent = SizeToContent.Width;
-        var mySettings = new MySettings();
+        var mySettings = new StartupMySetting();
         MinWidth = 350;
          Title= mySettings.AppInfo.ToString();
 
