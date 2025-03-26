@@ -19,7 +19,7 @@ namespace DeluxeEdit
            
             
                         AppInfo = appInfo;
-                Environment.SetEnvironmentVariable("ASPNETCORE_ENVIRONMENT", CurrentEnvironment);
+                Environment.SetEnvironmentVariable("CurrentEnvironment", CurrentEnvironment, EnvironmentVariableTarget.User);
            
             }
 
