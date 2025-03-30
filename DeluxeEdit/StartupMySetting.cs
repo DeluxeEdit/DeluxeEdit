@@ -19,7 +19,7 @@ namespace DeluxeEdit
            
             
                         AppInfo = appInfo;
-                Environment.SetEnvironmentVariable("CurrentEnvironment", CurrentEnvironment, EnvironmentVariableTarget.User);
+                Environment.SetEnvironmentVariable("CurrentEnvironmentDeluxeEdit", CurrentEnvironment, EnvironmentVariableTarget.User);
            
             }
 

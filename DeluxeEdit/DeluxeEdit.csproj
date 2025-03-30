@@ -40,10 +40,13 @@
       <IsTransformFile>true</IsTransformFile>
       <DependentUpon>App.config</DependentUpon>
     </None>
-    <None Update="App.Release.config">
+    <None Update="App.Production.config">
       <IsTransformFile>true</IsTransformFile>
       <DependentUpon>App.config</DependentUpon>
     </None>
   </ItemGroup>
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<Exec Command="powershell cp -Force $(ProjectDir)$(OutDir)*.dll $env:ProgramFiles\DeluxeEdit&#xD;&#xA;powershell cp -Force $(ProjectDir)$(OutDir)*Plugin*.dll $env:ProgramFiles\DeluxeEdit\plugins" />
+	</Target>
 
 </Project>
