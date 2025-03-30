@@ -10,6 +10,7 @@ using System.Windows.Controls;
 using DefaultPlugins;
 using DefaultPlugins.PluginHelpers;
 using ICSharpCode.AvalonEdit;
+using Windows.UI.Text.Core;
 
 namespace ViewModel.MainActions
 {
@@ -23,10 +24,10 @@ namespace ViewModel.MainActions
         public MainEditViewModel model;
         public ProgressBar progressBar;
         private ViewAs viewAsModel;
-
-        public TextEditor? CurrentText { get; set; }
         
-        public LoadFile(MainEditViewModel model, ProgressBar progressBar, TabControl tab, ViewAs viewAsModel)
+        public TextEditor? CurrentText { get; set; }
+      
+        public LoadFile(MainEditViewModel model, ProgressBar progressBar, TabControl tab, ViewAs viewAsModel, string argumets = "")
         {
             tabFiles = tab;
 
@@ -35,27 +36,40 @@ namespace ViewModel.MainActions
             this.viewAsModel=viewAsModel;
             fileTypeLoader = new FileTypeLoader();
             openPlugin = AllPlugins.InvokePlugin<FileOpenPlugin>(PluginType.FileOpen);
-
+            
         }
-        public  async Task<MyEditFile?> Load()
+        public async Task<MyEditFile?> AutoLoad(string arguments)
+        { return await Load(arguments); }
+        public async Task<MyEditFile?> Load(string arguments="")
         {
-
-            var action = openPlugin.GuiAction(openPlugin);
-            //if user cancelled path is empty 
-            if (action == null || !action.Path.HasContent()) return null;
-
-            model.SetStatusText($" File: {action.Path}");
+            ActionParameter parameter; 
+            String path = String.Empty;
             model.RemoveTabFilesKeyDown();
 
-            var parameter = new ActionParameter(action.Path, action.Encoding);
+            if (arguments.IsEmpty())
+            {
+                var action = openPlugin.GuiAction(openPlugin);
+                //if user cancelled path is empty 
+                if (action == null || !action.Path.HasContent()) return null;
+                path = action.Path;
+                model.SetStatusText($" File: {action.Path}");
+
+               parameter= new ActionParameter(action.Path, action.Encoding);
+            }
+            else
+            {
+                path = arguments;
+                model.SetStatusText($" File: {path}");
+                parameter = new ActionParameter(path);
+            }
 
             var progress = new Progress<long>(value => progressBar.Value = value);
 
             var result = new MyEditFile();
-            result.Path = action.Path;
+            result.Path = path;
             result.Content = await openPlugin.Perform(parameter, progress);
 
-            var items = AddMyControlsForExisting(action.Path);
+            var items = AddMyControlsForExisting(path);
  //           result.Area = fileTypeLoader.CurrentArea;
 
             result.Text = items.Item1;

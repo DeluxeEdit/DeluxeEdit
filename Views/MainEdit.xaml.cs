@@ -11,10 +11,10 @@ namespace Views
     {
        
         private MainEditViewModel editViewModel;
-        public MainEdit()
+        public MainEdit(string arguments = "")
         {
             InitializeComponent();
-            editViewModel = new MainEditViewModel(TabFiles, Progress, StatusText, viewAs, new MenuBuilder(MainMenu));
+            editViewModel = new MainEditViewModel(TabFiles, Progress, StatusText, viewAs, new MenuBuilder(MainMenu), arguments);
 
         }
 

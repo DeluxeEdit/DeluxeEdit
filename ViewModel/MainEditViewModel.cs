@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows;
 using ViewModel.MainActions;
 using System.Net.WebSockets;
+using System.Reflection.Metadata;
 
 namespace ViewModel
 {
@@ -31,7 +32,7 @@ namespace ViewModel
         private MenuBuilder menuBuilder;
         private MenuItem viewAsRoot;
 
-        public MainEditViewModel(TabControl tab, ProgressBar bar, TextBlock statusText, MenuItem viewAsRoot, MenuBuilder menuBuilder)
+        public MainEditViewModel(TabControl tab, ProgressBar bar, TextBlock statusText, MenuItem viewAsRoot, MenuBuilder menuBuilder, string arguments = "")
         {
             this.menuBuilder= menuBuilder;
             this.viewAsRoot = viewAsRoot;
@@ -55,21 +56,35 @@ namespace ViewModel
             MenuBuilder.OpenMenu.Click += OpenMenu_Click;
             MenuBuilder.NewMenu.Click += NewMenu_Click; ;
 
-            this.loadFile = new LoadFile(this, bar, tab, viewAsModel);
+            this.loadFile = new LoadFile(this, bar, tab, viewAsModel, arguments);
             this.paramerIsSelectedText= new ParameterIsSelectedTextModel(loadFile, bar);
             this.saveFile = new SaveFile(this, this.progressBar, textChange);
             this.hex = new HexView(this, this.progressBar, this.tabFiles, viewAsModel);
             relevantPlugins = AllPlugins.InvokePlugins(PluginManager.GetPluginsLocal())
                 .Where(p => p.Configuration.KeyCommand.Keys.Count > 0).ToList();
-              
+            HandleÁutoLoad(arguments);
 
-            foreach(var item in MenuBuilder.ItemsForSelectedText)
+
+            foreach (var item in MenuBuilder.ItemsForSelectedText)
                 item.Click += ItemForSelectedText;
         }
 
-        
+        private async Task<MyEditFile?> AutoLoad(string arguments)
+        {
+            if (arguments.HasContent())
+                return await loadFile.AutoLoad(arguments);
+            else
+                return null;
 
-        
+
+        }   
+ 
+        private async void HandleÁutoLoad(string arguments)
+        {
+await AutoLoad(arguments);  
+                
+                }
+
         public void SetStatusText(string statusText)
         {
             this.statusText.Text = statusText;

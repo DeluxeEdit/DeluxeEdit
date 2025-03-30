@@ -17,11 +17,11 @@ namespace DeluxeEdit;
 /// </summary>
 public partial class MainWindow : Window
 {
-    public MainWindow()
+    public MainWindow(string argumments = "")
     {
         InitializeComponent();
 
-        Content = new MainEdit();
+        Content = new MainEdit(argumments);
 
         SizeToContent = SizeToContent.Width;
         var mySettings = new StartupMySetting();
