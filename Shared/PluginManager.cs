@@ -11,13 +11,17 @@ namespace Shared
 {
     public class PluginManager
     {
-        private static string pluginPath { get; set; } = SystemConstants.PluginPath;
+        private static string pluginPath { get; set; } = SystemConstants.DefaultPluginPath;
             
         public static List<INamedActionPlugin> Instances = new List<INamedActionPlugin>();
         public static List<PluginFile> SourceFiles = new List<PluginFile>();
 
         static PluginManager()
         {
+            var mySettings = new StartupMySetting();
+            if (mySettings.PluginPath!=null) 
+                pluginPath = mySettings.PluginPath;
+
             LoadFiles();
 
             GetPluginsRemote();
@@ -79,13 +83,16 @@ namespace Shared
         public static List<PluginFile> LoadFiles()
         {
             //            var path=Path.GetFullPath(pluginPath);
+            /*
             var pos = pluginPath.LastIndexOf("\\");
+
             if (pos == -1) throw new Exception();
             var expression = pluginPath.Substring(pos + 1); ;
             var path = pluginPath.SubstringPos(0, pos);
+            ´*/
 
 
-            var result = Directory.GetFiles(path, expression)
+            var result = Directory.GetFiles(pluginPath, SystemConstants.WantedPluginFileFilter)
             .Select(p => RefreshPluginFile(p))
             .ToList();
 

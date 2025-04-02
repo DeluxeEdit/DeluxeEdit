@@ -1,6 +1,4 @@
-﻿using System.Configuration;
-using System.Data;
-using System.Windows;
+﻿using System.Windows;
 
 namespace DeluxeEdit;
 
@@ -9,10 +7,11 @@ namespace DeluxeEdit;
 /// </summary>
 public partial class App : Application
 {
-    private new void Startup(object sender, StartupEventArgs e)
+    private void Application_Startup(object sender, StartupEventArgs e)
     {
-       var win = new MainWindow(String.Join(", ", e.Args));
+        var win = new MainWindow(String.Join(", ", e.Args.ToList() )) ;
         win.Show();
+
     }
 }
 
