@@ -15,7 +15,7 @@
 		<UseWindowsForms>true</UseWindowsForms>
 		<Configurations>Debug;Release;Production</Configurations>
 		<PackageId>$(AssemblyName)</PackageId>
-		<AssemblyName>DeluxeEdit-$(MSBuildProjectName)</AssemblyName>
+		<AssemblyName>DeluxeEdit.$(MSBuildProjectName)</AssemblyName>
 	</PropertyGroup>
 
 	<ItemGroup>

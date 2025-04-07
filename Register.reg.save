@@ -1,0 +1,21 @@
+HKEY_CLASSES_ROOT
+   .myp
+      (Default) = MyProgram.1
+   CLSID
+      {00000000-1111-2222-3333-444444444444}
+         InProcServer32
+            (Default) = C:\MyDir\MyCommand.dll
+            ThreadingModel = Apartment
+      {11111111-2222-3333-4444-555555555555}
+         InProcServer32
+            (Default) = C:\MyDir\MyPropSheet.dll
+            ThreadingModel = Apartment
+   MyProgram.1
+      (Default) = MyProgram Application
+      Shellex
+         ContextMenuHandler
+            MyCommand
+               (Default) = {00000000-1111-2222-3333-444444444444}
+         PropertySheetHandlers
+            MyPropSheet
+               (Default) = {11111111-2222-3333-4444-555555555555}

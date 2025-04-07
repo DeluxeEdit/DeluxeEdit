@@ -15,7 +15,6 @@
         public const int MinimumSelectionLengthToInvoke = 1;
         public const string AppName = "DeluxeEdit";
         public const string NugetPackageStartName = $"{AppName}.";
-        public readonly static string ApplicationPath  = $"{Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles)}\\{AppName}";
         public readonly static string DefaultPluginPath = "."; 
         public readonly static Version AppVersion = new Version("1.0");
         public static AppInfo GetAppInfo()
