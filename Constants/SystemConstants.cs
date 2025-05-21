@@ -17,6 +17,9 @@
         public const string NugetPackageStartName = $"{AppName}.";
         public readonly static string DefaultPluginPath = "."; 
         public readonly static Version AppVersion = new Version("1.0");
+        public const string DefaultEnvironment = "Debug";
+
+
         public static AppInfo GetAppInfo()
         {
             var result = new AppInfo { Environment = AppEnvironment.Debug, Name = SystemConstants.AppName, Version = SystemConstants.AppVersion };

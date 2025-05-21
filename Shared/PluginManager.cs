@@ -1,4 +1,5 @@
-﻿using Constants;
+﻿
+using Constants;
 using Extensions;
 using Extensions.Util;
 using Model;
@@ -24,7 +25,7 @@ namespace Shared
 
             LoadFiles();
 
-            GetPluginsRemote();
+//            GetPluginsRemote();
 
         }
 
