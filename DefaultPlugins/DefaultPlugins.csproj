@@ -10,7 +10,7 @@
 		<Title>A List of  nuget defaullt plugins for DeluxeEdit</Title>
 		<Authors>Pierre Axelsson</Authors>
 		<Company>Pierre Axelsson</Company>
-		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
 		<UserSecretsId>b129b379-a295-4367-a3e3-7aae961e7337</UserSecretsId>
 		<UseWindowsForms>true</UseWindowsForms>
 		<Configurations>Debug;Release;Production</Configurations>
