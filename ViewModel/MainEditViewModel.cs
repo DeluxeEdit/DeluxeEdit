@@ -8,6 +8,7 @@ using System.Windows;
 using ViewModel.MainActions;
 using System.Net.WebSockets;
 using System.Reflection.Metadata;
+using System.IO;
 
 namespace ViewModel
 {
@@ -56,6 +57,7 @@ namespace ViewModel
             MenuBuilder.OpenMenu.Click += OpenMenu_Click;
             MenuBuilder.NewMenu.Click += NewMenu_Click; ;
 
+
             this.loadFile = new LoadFile(this, bar, tab, viewAsModel, arguments);
             this.paramerIsSelectedText= new ParameterIsSelectedTextModel(loadFile, bar);
             this.saveFile = new SaveFile(this, this.progressBar, textChange);
@@ -71,8 +73,21 @@ namespace ViewModel
 
         private async Task<MyEditFile?> AutoLoad(string arguments)
         {
-            if (arguments.HasContent())
-                return await loadFile.AutoLoad(arguments);
+            string path = String.Empty;
+            string action = String.Empty;
+            var split = arguments.Split(" ");
+            if (split.Length == 0)
+                return null; 
+
+            if (split.Length > 0)
+                path = split[0];
+             if (split.Length > 1)
+                action = split[1];
+
+           if (path.HasContent() && action.Equals("hex", StringComparison.OrdinalIgnoreCase))
+                return await   hex.AutoLoad(path);
+            if (path.HasContent())
+                return await loadFile.AutoLoad(path);
             else
                 return null;
 
@@ -80,7 +95,7 @@ namespace ViewModel
         }   
  
         private async void HandleÁutoLoad(string arguments)
-        {
+            {
 await AutoLoad(arguments);  
                 
                 }

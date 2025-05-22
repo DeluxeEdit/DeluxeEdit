@@ -1,4 +1,5 @@
 ﻿using DefaultPlugins;
+using Extensions;
 using Extensions.Util;
 using ICSharpCode.AvalonEdit;
 using Model;
@@ -25,19 +26,29 @@ namespace ViewModel.MainActions
 
 
 
-        public  async Task<MyEditFile?> LoadHexView()
+        public new  async Task<MyEditFile?> AutoLoad(string arguments)
+        { return await LoadHexView(arguments); }
+        public async Task<MyEditFile?> LoadHexView(string arguments = "")
         {
+            string realPath;
+            if (arguments.HasContent())
+                realPath = arguments;
+            else
+            { 
+                if (MyEditFiles.Current == null || MyEditFiles.Current.Text == null) throw new NullReferenceException();
+                realPath = MyEditFiles.Current.Path;
+            }
+           
             var result = new MyEditFile();
-            if (MyEditFiles.Current == null || MyEditFiles.Current.Text == null) throw new NullReferenceException();
 
-            model.SetStatusText($"Hex View:{MyEditFiles.Current.Path}");
+            model.SetStatusText($"Hex View:{realPath}");
             model.RemoveTabFilesKeyDown();
 
             var progress = new Progress<long>(value => progressBar.Value = value);
-            var parameter = new ActionParameter(MyEditFiles.Current.Path, MyEditFiles.Current.Encoding);
+            var parameter = new ActionParameter(realPath);
             var hexOutput = await hex.Perform(parameter, progress);
             
-            result.Path = MyEditFiles.Current.Path;
+            result.Path = realPath;
             result.Content = hexOutput;
     
             var items  = AddMyControlsForExisting(result.Path, "hex:");
@@ -46,6 +57,7 @@ namespace ViewModel.MainActions
 
             items.Item1.Text = hexOutput;
             result.Tab = items.Item2;
+
 
             viewAsModel.SetSelectedPath(result.Path);
             MyEditFiles.Add(result);
