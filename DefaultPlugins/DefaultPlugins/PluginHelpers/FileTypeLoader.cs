@@ -27,7 +27,7 @@ namespace DefaultPlugins.PluginHelpers
         public TextEditor CurrentText { get; set; } = new TextEditor();
         public TextDocument CurrentDocument { get; set; } = new TextDocument();
         public TextArea CurrentArea { get; set; } = new TextEditor().TextArea;
-        public FileTypeLoader()
+        static FileTypeLoader()
         {
             
             var registration = new HighlightingRegistrationItem();
@@ -79,14 +79,14 @@ namespace DefaultPlugins.PluginHelpers
 
 
         
-        public void  LoadDefinitionFromFile(HighlightingRegistrationItem registrationItem)
+        public static void LoadDefinitionFromFile(HighlightingRegistrationItem registrationItem)
         {
 //            string logFileDefinitionPath = "./DefaultPlugins/PluginHelpers/LogFileDefinition.xshd";
             using var reader = XmlReader.Create(registrationItem.PathToDefinition);
              registrationItem.Definition=HighlightingLoader.Load(reader, HighlightingManager.Instance);
         }
 
-        public void RegisterDefinition(HighlightingRegistrationItem registrationItem)       
+        public static void RegisterDefinition(HighlightingRegistrationItem registrationItem)       
         {
             var manager = HighlightingManager.Instance;
             manager.RegisterHighlighting(registrationItem.Name, registrationItem.Extensions.ToArray() ,registrationItem.Definition);

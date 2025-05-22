@@ -59,9 +59,6 @@
 	  <None Update="DefaultPlugins\PluginHelpers\LogFileDefinition.xshd">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </None>
-	  <None Update="DefaultPlugins\PluginHelpers\XML-Mode.xshd">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
 	</ItemGroup>
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
 	  <Exec Command="powershell cp -Force $(ProjectDir)$(OutDir)*. " />
