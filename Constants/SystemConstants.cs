@@ -18,6 +18,7 @@
         public readonly static string DefaultPluginPath = "."; 
         public readonly static Version AppVersion = new Version("1.0");
         public const string DefaultEnvironment = "Debug";
+        public const string LogFileDefinitionPath = "./DefaultPlugins/PluginHelpers/LogFileDefinition.xshd";
 
 
         public static AppInfo GetAppInfo()

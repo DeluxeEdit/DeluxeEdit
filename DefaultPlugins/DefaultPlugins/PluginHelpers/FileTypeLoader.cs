@@ -15,6 +15,8 @@ using System.Xml;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 using System.Reflection.Metadata;
 using ICSharpCode.AvalonEdit.Rendering;
+using Constants;
+using System.Threading.Tasks;
 
 namespace DefaultPlugins.PluginHelpers
 {
@@ -26,6 +28,7 @@ namespace DefaultPlugins.PluginHelpers
         public static string CurrentPath { get; set; } = string.Empty;
         public TextEditor CurrentText { get; set; } = new TextEditor();
         public TextDocument CurrentDocument { get; set; } = new TextDocument();
+
         public TextArea CurrentArea { get; set; } = new TextEditor().TextArea;
         static FileTypeLoader()
         {
@@ -33,7 +36,7 @@ namespace DefaultPlugins.PluginHelpers
             var registration = new HighlightingRegistrationItem();
             registration.Name = "LogFile";
             registration.Extensions.Add(".log");
-            registration.PathToDefinition = "./DefaultPlugins/PluginHelpers/LogFileDefinition.xshd";
+            registration.PathToDefinition = SystemConstants.LogFileDefinitionPath;
       LoadDefinitionFromFile(registration);
             RegisterDefinition(registration);
             
@@ -49,6 +52,7 @@ namespace DefaultPlugins.PluginHelpers
 
             var definition = manager.GetDefinitionByExtension(new FileInfo(path).Extension);
             CurrentText = new TextEditor();
+
 
      
             CurrentArea = CurrentText.TextArea;
@@ -78,14 +82,15 @@ namespace DefaultPlugins.PluginHelpers
         }
 
 
-        
+
         public static void LoadDefinitionFromFile(HighlightingRegistrationItem registrationItem)
         {
-//            string logFileDefinitionPath = "./DefaultPlugins/PluginHelpers/LogFileDefinition.xshd";
             using var reader = XmlReader.Create(registrationItem.PathToDefinition);
-             registrationItem.Definition=HighlightingLoader.Load(reader, HighlightingManager.Instance);
+            Parallel.For(0, 1, i =>
+            {
+                registrationItem.Definition = HighlightingLoader.Load(reader, HighlightingManager.Instance);
+            });
         }
-
         public static void RegisterDefinition(HighlightingRegistrationItem registrationItem)       
         {
             var manager = HighlightingManager.Instance;

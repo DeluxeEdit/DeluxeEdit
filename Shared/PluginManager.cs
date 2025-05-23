@@ -126,8 +126,12 @@ namespace Shared
             if (ourSource == null)
             {
                 ourSource = new PluginFile { LocalPath = path };
-                ourSource.Assembly = Assembly.LoadFrom(path);
+                Parallel.For(0, 1, i =>
+                {
 
+                    ourSource.Assembly = Assembly.LoadFrom(path);
+
+                });
                 SourceFiles.Add(ourSource);
             }
             else if (ourSource.Assembly != null)
