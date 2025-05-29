@@ -19,7 +19,7 @@ namespace Shared
 
         static PluginManager()
         {
-            var mySettings = new StartupMySetting();
+            var mySettings = new StartupMySettings();
             if (mySettings.PluginPath!=null) 
                 pluginPath = mySettings.PluginPath;
 

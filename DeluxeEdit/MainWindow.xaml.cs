@@ -17,7 +17,7 @@ public partial class MainWindow : Window
         Content = new MainEdit(argumments);
 
         SizeToContent = SizeToContent.Width;
-        var mySettings = new StartupMySetting();
+        var mySettings = new StartupMySettings(argumments);
         MinWidth = 350;
          Title= mySettings.AppInfo.ToString();
 

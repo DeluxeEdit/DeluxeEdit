@@ -16,6 +16,7 @@
     <Compile Include="MainActions\DoWhenTextChange.cs" />
     <Compile Include="MainActions\HexView.cs" />
     <Compile Include="MainActions\LoadFile.cs" />
+    <Compile Include="MainActions\AutoLoad.cs" />
     <Compile Include="MainActions\NewFile.cs" />
     <Compile Include="MainActions\ParameterIsSelectedTextModel.cs" />
     <Compile Include="MainActions\SaveFile.cs" />
@@ -29,6 +30,7 @@
 
   <ItemGroup>
     <PackageReference Include="AvalonEdit" Version="6.3.0.90" />
+    <PackageReference Include="CommandLineArgumentsParser" Version="3.0.23" />
   </ItemGroup>
 
   <ItemGroup>

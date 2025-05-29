@@ -32,6 +32,7 @@ namespace ViewModel
         private List<INamedActionPlugin> relevantPlugins;
         private MenuBuilder menuBuilder;
         private MenuItem viewAsRoot;
+        private AutoLoad autoload;
 
         public MainEditViewModel(TabControl tab, ProgressBar bar, TextBlock statusText, MenuItem viewAsRoot, MenuBuilder menuBuilder, string arguments = "")
         {
@@ -64,50 +65,22 @@ namespace ViewModel
             this.hex = new HexView(this, this.progressBar, this.tabFiles, viewAsModel);
             relevantPlugins = AllPlugins.InvokePlugins(PluginManager.GetPluginsLocal())
                 .Where(p => p.Configuration.KeyCommand.Keys.Count > 0).ToList();
-            HandleÁutoLoad(arguments);
-
-
+            autoload = new AutoLoad(loadFile, hex);
+           autoload.HandleÁutoLoad(arguments);
             foreach (var item in MenuBuilder.ItemsForSelectedText)
                 item.Click += ItemForSelectedText;
         }
 
-        private async Task<MyEditFile?> AutoLoad(string arguments)
+
+        public void RemoveTabFilesKeyDown()
         {
-            string path = String.Empty;
-            string action = String.Empty;
-            var split = arguments.Split(" ");
-            if (split.Length == 0)
-                return null; 
+            tabFiles.KeyDown -= TabFiles_KeyDown;
 
-            if (split.Length > 0)
-                path = split[0];
-             if (split.Length > 1)
-                action = split[1];
-
-           if (path.HasContent() && action.Equals("hex", StringComparison.OrdinalIgnoreCase))
-                return await   hex.AutoLoad(path);
-            if (path.HasContent())
-                return await loadFile.AutoLoad(path);
-            else
-                return null;
-
-
-        }   
- 
-        private async void HandleÁutoLoad(string arguments)
-            {
-await AutoLoad(arguments);  
-                
-                }
+        }
 
         public void SetStatusText(string statusText)
         {
             this.statusText.Text = statusText;
-
-        }
-        public void RemoveTabFilesKeyDown()
-        {
-            tabFiles.KeyDown -= TabFiles_KeyDown;
 
         }
 
@@ -128,7 +101,7 @@ await AutoLoad(arguments);
             
             return result;
         }
-        public async Task<string> HandleOtherPlugins(  CustomMenuItem? myMenuItem)
+        public async Task<string> HandleOtherPlugins(  CustomMenuItem myMenuItem)
         {
             var progress = new Progress<long>(value => progressBar.Value = value);
 

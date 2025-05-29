@@ -57,6 +57,7 @@
     <AppxPackageSigningEnabled>false</AppxPackageSigningEnabled>
     <NoWarn>$(NoWarn);NU1702</NoWarn>
     <EntryPointProjectUniqueName>..\DeluxeEdit\DeluxeEdit.csproj</EntryPointProjectUniqueName>
+    <UserSecretsId>aa94bcee-0525-4c9c-98bd-e304acc62b7f</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
