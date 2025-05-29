@@ -13,13 +13,15 @@ namespace Shared
     public class PluginManager
     {
         private static string pluginPath { get; set; } = SystemConstants.DefaultPluginPath;
-            
+        private static string arguments { get; set; } = string.Empty;
+
         public static List<INamedActionPlugin> Instances = new List<INamedActionPlugin>();
         public static List<PluginFile> SourceFiles = new List<PluginFile>();
 
-        static PluginManager()
+        static  PluginManager()
         {
             var mySettings = new StartupMySettings();
+           
             if (mySettings.PluginPath!=null) 
                 pluginPath = mySettings.PluginPath;
 

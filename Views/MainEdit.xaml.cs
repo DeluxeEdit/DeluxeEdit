@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using Shared;
+using System.Windows;
 using System.Windows.Controls;
 using ViewModel;
 
@@ -16,6 +17,7 @@ namespace Views
             InitializeComponent();
             editViewModel = new MainEditViewModel(TabFiles, Progress, StatusText, viewAs, new MenuBuilder(MainMenu), arguments);
 
+StartupMySettings.SendArguments(arguments);
         }
 
 

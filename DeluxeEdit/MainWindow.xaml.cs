@@ -10,16 +10,18 @@ namespace DeluxeEdit;
 /// </summary>
 public partial class MainWindow : Window
 {
-    public MainWindow(string argumments = "")
+    public MainWindow(string arguments = "")
     {
         InitializeComponent();
 
-        Content = new MainEdit(argumments);
+        Content = new MainEdit(arguments);
 
         SizeToContent = SizeToContent.Width;
-        var mySettings = new StartupMySettings(argumments);
+
         MinWidth = 350;
-         Title= mySettings.AppInfo.ToString();
+        var mySettings = new StartupMySettings();
+        Title = mySettings.AppInfo.ToString();
+
 
     }
 }

@@ -10,10 +10,14 @@ namespace Shared
         // ConfigurationBuilder builder= new ConfigurationBuilder().AddXmlFile();
         public string? readEnvironment { get; set; } = ConfigurationManager.AppSettings.Get("CurrentEnvironment");
         public string CurrentEnvironment { get; set; } = String.Empty;
+        public static string ApplicationAguments { get; set; } = String.Empty;
 
-
+        public static void SendArguments(string arguments)
+        { 
+           ApplicationAguments = arguments;
+        }
         public string? PluginPath { get; set; } = ConfigurationManager.AppSettings.Get("PluginPath");
-        public StartupMySettings(string arguments)
+        public StartupMySettings()
         {
 //            var parser = new CommandLineArgumentsParser();
 

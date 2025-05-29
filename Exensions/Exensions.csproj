@@ -10,11 +10,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	
-	  <PackageReference Include="Dapper" Version="2.1.35" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Xml" Version="9.0.0" />
-    <PackageReference Include="System.IO.Packaging" Version="9.0.0" />
-  </ItemGroup>
+	  <Content Include="DapperBatchHelper.txt" />
+	</ItemGroup>
 
 	<ItemGroup>
 	  <ProjectReference Include="..\Model\Model.csproj" />
