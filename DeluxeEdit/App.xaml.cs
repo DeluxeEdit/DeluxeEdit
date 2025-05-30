@@ -9,7 +9,7 @@ public partial class App : Application
 {
     private void Application_Startup(object sender, StartupEventArgs e)
     {
-        var win = new MainWindow(String.Join(", ", e.Args.ToList() )) ;
+        var win = new MainWindow(String.Join(",", e.Args.ToList() )) ;
         win.Show();
 
     }

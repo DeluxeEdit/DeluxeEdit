@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="CmdLine" Version="1.0.7.509" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Constants\Constants.csproj" />
     <ProjectReference Include="..\Exensions\Exensions.csproj" />
     <ProjectReference Include="..\Model\Model.csproj" />

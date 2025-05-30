@@ -1,11 +1,14 @@
-﻿using Constants;
+﻿using CmdLine; 
+using Constants;
 using System.Configuration;
-//using CommandLineParser;
+using System.Security.Policy;
+
 
 namespace Shared
 {
     public class StartupMySettings
     {
+
         public AppInfo AppInfo { get; set; } = SystemConstants.GetAppInfo();
         // ConfigurationBuilder builder= new ConfigurationBuilder().AddXmlFile();
         public string? readEnvironment { get; set; } = ConfigurationManager.AppSettings.Get("CurrentEnvironment");
@@ -14,12 +17,19 @@ namespace Shared
 
         public static void SendArguments(string arguments)
         { 
-           ApplicationAguments = arguments;
+            ApplicationAguments = arguments;
+             var argList= arguments.Split(",").ToList();
+            Exception parseExeption = new CommandLineException(arguments);
+            CommandLine.CommandSeparators = new List<string> { "--" };
+
+            CommandLine.TryParse(out argList, out parseExeption);
+            
+            var arg = CommandLine.Args;
+
         }
         public string? PluginPath { get; set; } = ConfigurationManager.AppSettings.Get("PluginPath");
         public StartupMySettings()
         {
-//            var parser = new CommandLineArgumentsParser();
 
             if (readEnvironment != null)
                 CurrentEnvironment = readEnvironment;
