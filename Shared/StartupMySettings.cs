@@ -1,5 +1,6 @@
 ﻿using CmdLine; 
 using Constants;
+using Model;
 using System.Configuration;
 using System.Security.Policy;
 
@@ -14,7 +15,12 @@ namespace Shared
         public string? readEnvironment { get; set; } = ConfigurationManager.AppSettings.Get("CurrentEnvironment");
         public string CurrentEnvironment { get; set; } = String.Empty;
         public static string ApplicationAguments { get; set; } = String.Empty;
+        public AutoLoadType? GetAutoLoadType()
+        {
 
+
+            throw new NotImplementedException();
+        }
         public static void SendArguments(string arguments)
         { 
             ApplicationAguments = arguments;

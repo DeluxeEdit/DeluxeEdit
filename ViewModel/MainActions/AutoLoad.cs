@@ -5,6 +5,7 @@ using Extensions.Util;
 using ICSharpCode.AvalonEdit;
 using ICSharpCode.AvalonEdit.Rendering;
 using Model;
+using Shared;
 using System.Formats.Tar;
 using System.IO;
 using System.Threading.Tasks;
@@ -19,15 +20,19 @@ namespace ViewModel.MainActions
         private LoadFile loadFile;
         private HexView hex;
 
-        public AutoLoad(LoadFile loadFile, HexView hex)
+        public AutoLoad(LoadFile loadFile, HexView
+            hex)
         {
             this.loadFile = loadFile;
             this.hex = hex;
+         
         }
 
 
         public async Task<MyEditFile?> StartAutoLoad(string arguments)
         {
+            var settings = new StartupMySettings();
+            settings.GetAutoLoadType();
             // var parser = new CommandLine();
             string path = String.Empty;
             string action = String.Empty;

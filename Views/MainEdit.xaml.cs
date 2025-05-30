@@ -15,9 +15,10 @@ namespace Views
         public MainEdit(string arguments = "")
         {
             InitializeComponent();
+            StartupMySettings.SendArguments(arguments);
+
             editViewModel = new MainEditViewModel(TabFiles, Progress, StatusText, viewAs, new MenuBuilder(MainMenu), arguments);
 
-StartupMySettings.SendArguments(arguments);
         }
 
 
