@@ -31,27 +31,15 @@ namespace ViewModel.MainActions
 
         public async Task<MyEditFile?> StartAutoLoad(string arguments)
         {
-            var settings = new StartupMySettings();
-            settings.GetAutoLoadType();
-            // var parser = new CommandLine();
-            string path = String.Empty;
-            string action = String.Empty;
-            var split = arguments.Split(" ");
-            if (split.Length == 0)
-                return null;
 
-            if (split.Length > 0)
-                path = split[0];
-            if (split.Length > 1)
-                action = split[1];
+            var currentAutoLoadTypePath= StartupMySettings.CurrentAutoLoadTypePath;
+            if (StartupMySettings.CurrentAutoLoadType.HasValue==false ) return null;
 
-            if (path.HasContent() && action.Equals("hex", StringComparison.OrdinalIgnoreCase))
-                return await hex.AutoLoad(path);
-            if (path.HasContent())
-                return await loadFile.AutoLoad(path);
-            else
-                return null;
-
+            if (StartupMySettings.CurrentAutoLoadType.Value== AutoLoadType.Hex)
+                    return await hex.AutoLoad(currentAutoLoadTypePath);
+         
+            return await loadFile.AutoLoad(currentAutoLoadTypePath);
+         
 
         }
 

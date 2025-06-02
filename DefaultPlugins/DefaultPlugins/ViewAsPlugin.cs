@@ -17,7 +17,7 @@ namespace DefaultPlugins
         public const string VersionString = "0.1";
         private FileTypeLoader fileTypeLoader;
         public TextEditor CurrentText { get; set; } = new TextEditor();
-        public TextArea CurrentArea { get; set; } = new TextEditor().TextArea;
+//        public TextArea CurrentArea { get; set; } = new TextEditor().TextArea;
         public bool ParameterIsSelectedText { get; set; } =false;
         public Version Version { get; set; } = new Version(VersionString);
         public ActionParameter Parameter { get; set; } = new ActionParameter();
@@ -56,7 +56,7 @@ namespace DefaultPlugins
  
                 fileTypeLoader.LoadCurrent(path);
                 CurrentText = fileTypeLoader.CurrentText;
-                CurrentArea = fileTypeLoader.CurrentArea;
+             //   CurrentArea = fileTypeLoader.CurrentArea;
 
 
            

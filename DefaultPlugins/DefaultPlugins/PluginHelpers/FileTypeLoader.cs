@@ -29,7 +29,7 @@ namespace DefaultPlugins.PluginHelpers
         public TextEditor CurrentText { get; set; } = new TextEditor();
         public TextDocument CurrentDocument { get; set; } = new TextDocument();
 
-        public TextArea CurrentArea { get; set; } = new TextEditor().TextArea;
+       // public TextArea CurrentArea { get; set; } = new TextEditor().TextArea;
         static FileTypeLoader()
         {
             
@@ -55,7 +55,7 @@ namespace DefaultPlugins.PluginHelpers
 
 
      
-            CurrentArea = CurrentText.TextArea;
+            var CurrentArea = CurrentText.TextArea;
             CurrentArea.MinHeight = 500;
             CurrentArea.MinWidth = 1000;
             CurrentArea.VerticalAlignment = System.Windows.VerticalAlignment.Stretch;

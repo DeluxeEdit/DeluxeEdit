@@ -53,7 +53,7 @@ namespace ViewModel.MainActions
     
             var items  = AddMyControlsForExisting(result.Path, "hex:");
             result.Text = items.Item1;
-            result.Area = fileTypeLoader.CurrentArea;
+            result.Area = fileTypeLoader.CurrentText.TextArea;
 
             items.Item1.Text = hexOutput;
             result.Tab = items.Item2;

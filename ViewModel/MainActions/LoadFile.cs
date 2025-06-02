@@ -106,10 +106,10 @@ namespace ViewModel.MainActions
             text.HorizontalAlignment = HorizontalAlignment.Stretch;
             text.VerticalAlignment = VerticalAlignment.Stretch;
             name = $"{overrideTabNamePrefix}{name}";
-            var tab = WPFUtil.AddOrUpdateTab(name, tabFiles, fileTypeLoader.CurrentArea);
+            var tab = WPFUtil.AddOrUpdateTab(name, tabFiles, fileTypeLoader.CurrentText.TextArea);
             model.ChangeTab(tab);
             var result = new Tuple<TextEditor, TabItem>(text, tab);
-            fileTypeLoader.CurrentArea.Focus();
+            fileTypeLoader.CurrentText.TextArea.Focus();
             return result;
         }
     }

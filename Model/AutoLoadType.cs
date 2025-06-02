@@ -4,6 +4,6 @@ using System.Text;
 
 namespace Model
 {
-    public enum AutoLoadType { LoadFile,Hex }
+    public enum AutoLoadType { File,Hex }
 
 }

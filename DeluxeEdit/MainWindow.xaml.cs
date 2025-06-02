@@ -20,7 +20,7 @@ public partial class MainWindow : Window
 
         MinWidth = 350;
         var mySettings = new StartupMySettings();
-        Title = mySettings.AppInfo.ToString();
+        Title = mySettings.CurrentAppInfo.ToString();
 
 
     }

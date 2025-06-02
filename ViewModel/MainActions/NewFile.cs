@@ -71,7 +71,7 @@ text.HorizontalContentAlignment= HorizontalAlignment.Stretch;
             text.VerticalAlignment = VerticalAlignment.Stretch;
 
             name = $"{overrideTabNamePrefix}{name}";
-            var tab = WPFUtil.AddOrUpdateTab(name, tabFiles, fileTypeLoader.CurrentArea);
+            var tab = WPFUtil.AddOrUpdateTab(name, tabFiles, fileTypeLoader.CurrentText.TextArea);
 
             model.ChangeTab(tab);
             text.TextArea.Focus(); 
