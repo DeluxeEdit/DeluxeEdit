@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<default>
+		<property name="system.true" value="se" />
+	</default>
+	<shell>
+
+		<menu name="DeluxeEdit with DeluxeEdit..." description="Run DeluxeEdit with DeluxeEdit"	properties="system.true=se">
+      <icon path=	"C:\gitroot\DeluxeEdit\DeluxeEdit\bin\Production\Publish\DeluxeEdit.exe"  />
+		<visibility maxfiles="1" maxfolders="0" istrue="true"   	 />
+		<actions>
+			<exec path="DeluxeEdit.exe" arguments="${selection.path}" />
+
+	  </actions>
+    </menu>
+  <menu name="HexView with DeluxeEdit..." description="Run HexView with DeluxeEdit"  properties="system.true=se">
+      <icon path="C:\gitroot\DeluxeEdit\DeluxeEdit\bin\Production\Publish\DeluxeEdit.exe"  />
+	  <visibility maxfiles="1" maxfolders="0"   istrue="true"  	 	/>
+      <actions>
+		  <exec path="DeluxeEdit.exe" arguments="${selection.path} hex" />
+		  
+	  </actions>
+    </menu>
+  </shell>
+</root>
