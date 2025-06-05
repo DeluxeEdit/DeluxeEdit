@@ -76,6 +76,6 @@
   <Import Project="$(WapProjPath)\Microsoft.DesktopBridge.targets" />
   <ItemGroup>
     <ProjectReference Include="..\DeluxeEdit\DeluxeEdit.csproj" />
-    <ProjectReference Include="..\ShellExtension\ShellExtension.csproj" />
   </ItemGroup>
+
 </Project>
