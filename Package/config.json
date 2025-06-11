@@ -1,0 +1,17 @@
+{
+  "applications": [
+    {
+      "id": "Sample",
+      "executable": "Sample.exe",
+      "workingDirectory": "",
+      "stopOnScriptError": false,
+      "startScript": {
+        "scriptPath": "RunMePlease.ps1",
+        "scriptArguments": "\\\"First argument\\\" secondArgument",
+        "runInVirtualEnvironment": true,
+        "showWindow": true,
+        "waitForScriptToFinish": false
+      }    }
+    ]
+
+}
