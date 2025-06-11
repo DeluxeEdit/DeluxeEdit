@@ -3,7 +3,7 @@
     {
       "id": "ShellExtension",
       "startScript": {
-        "scriptPath": "RunMePlease.ps1",
+        "scriptPath": "C:\\gitroot\\DeluxeEdit\\ShellExtension\\install.ps1",
         "runInVirtualEnvironment": true,
         "showWindow": true,
         "waitForScriptToFinish": true
