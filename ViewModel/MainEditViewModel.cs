@@ -34,7 +34,7 @@ namespace ViewModel
         private MenuItem viewAsRoot;
         private AutoLoad autoload;
 
-        public MainEditViewModel(TabControl tab, ProgressBar bar, TextBlock statusText, MenuItem viewAsRoot, MenuBuilder menuBuilder, string arguments = "")
+        public  MainEditViewModel(TabControl tab, ProgressBar bar, TextBlock statusText, MenuItem viewAsRoot, MenuBuilder menuBuilder, string arguments = "")
         {
             this.menuBuilder= menuBuilder;
             this.viewAsRoot = viewAsRoot;
@@ -89,7 +89,8 @@ namespace ViewModel
             string result = String.Empty;
             var header=item!=null && item.Header!=null ? item.Header.ToString() : String.Empty;
             
-            var myMenuItem = MenuBuilder.CustomMainMenu.SelectMany(p => p.MenuItems)
+            var 
+                myMenuItem = MenuBuilder.CustomMainMenu.SelectMany(p => p.MenuItems)
                  .Single(p => p != null && p.Title!=null && p.Title ==header);
            
 //            var actions = new SetupMenuActions(this, tabFiles, progressBar, viewAsRoot, menuBuilder);
@@ -97,6 +98,7 @@ namespace ViewModel
         //    if (myMenuItem.MenuActon != null)
 ///                await myMenuItem.MenuActon.Invoke();
   //         else
+
                 result=await HandleOtherPlugins(myMenuItem);
             
             return result;
@@ -109,6 +111,7 @@ namespace ViewModel
             string result=String.Empty;
             if (myMenuItem != null && myMenuItem.Plugin != null && myMenuItem.Plugin.ParameterIsSelectedText && selectedText.HasContent())
                 result = await myMenuItem.Plugin.Perform(new ActionParameter(selectedText), progress);
+  
             else if (myMenuItem != null && myMenuItem.Plugin != null && myMenuItem.Plugin.Parameter != null)
                 result = await myMenuItem.Plugin.Perform(myMenuItem.Plugin.Parameter, progress);
         return result;

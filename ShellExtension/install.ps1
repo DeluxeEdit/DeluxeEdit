@@ -1,9 +1,11 @@
- $found =Test-Path "$env:USERPROFILE\ShellAnything"
+$path=  "$env:USERPROFILE\ShellAnythingX"
+ $found =Test-Path $path
 if ($found=false) 
 {
-	md "$env:USERPROFILE\ShellAnything"
+	md $path
 }
-cd "$env:USERPROFILE\ShellAnything\bin"
+
+cd "$path\bin"
 regsvr32 sadeluxeeditextension.dll
 
 

@@ -3,7 +3,7 @@
     {
       "id": "ShellExtension",
       "startScript": {
-        "scriptPath": "C:\\gitroot\\DeluxeEdit\\ShellExtension\\install.ps1",
+        "scriptPath": ".\\install.ps1",
         "runInVirtualEnvironment": true,
         "showWindow": true,
         "waitForScriptToFinish": true

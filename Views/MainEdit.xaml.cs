@@ -1,4 +1,5 @@
-﻿using Shared;
+﻿
+using Shared;
 using System.Windows;
 using System.Windows.Controls;
 using ViewModel;
