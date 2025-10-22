@@ -12,7 +12,7 @@ namespace ShellExtensions
     /// </summary>
     public class DeluxeHexViewExtension : SharpContextMenu
     {
-        const string CommandToRun = "--hex";
+        const string CommandToRun = "PyDeluxeEdit --hex";
         protected override bool CanShowMenu()
         {
             //  We will always show the menu
@@ -28,11 +28,11 @@ namespace ShellExtensions
             //  Create a 'count lines' item
             var itemCountLines = new ToolStripMenuItem
             {
-                Text = "Count Lines"
+                Text = "DeluxeHexView..."
             };
 
             //  When we click, we'll call the 'CountLines' function
-            itemCountLines.Click += (sender, args) => CountLines();
+            itemCountLines.Click += (sender, args) => runProgram();
 
             //  Add the item to the context menu
             menu.Items.Add(itemCountLines);
@@ -41,21 +41,14 @@ namespace ShellExtensions
             return menu;
         }
 
-        private void CountLines()
+        private void runProgram()
         {
-            //  Builder for the output
-            var builder = new StringBuilder();
-
-            //  Go through each fileS
-            foreach (var filePath in SelectedItemPaths)
-            {
-                //  Count the lines
-                builder.AppendLine(string.Format("{0} - {1} Lines",
-                  Path.GetFileName(filePath), File.ReadAllLines(filePath).Length));
+            var selectedPath = SelectedItemPaths.FirstOrDefault();
+            if (selectedPath != null)
+            { 
             }
-
-            //  Show the output
-            MessageBox.Show(builder.ToString());
+            //  Go through each fileS
+                //  Count the lines
         }
 
     }

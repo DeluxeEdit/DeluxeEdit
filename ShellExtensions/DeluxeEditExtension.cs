@@ -12,7 +12,7 @@ namespace ShellExtensions
     /// </summary>
     public class DeluxeEditExtension : SharpContextMenu
     {
-        const string CommandToRun = "";
+        const string CommandToRun = "PyDeluxeEdit";
 
         protected override bool CanShowMenu()
         {
@@ -28,11 +28,11 @@ namespace ShellExtensions
             //  Create a 'count lines' item
             var itemCountLines = new ToolStripMenuItem
             {
-                Text = "Count Lines"
+                Text = "DeluxeEdit..."
             };
 
             //  When we click, we'll call the 'CountLines' function
-            itemCountLines.Click += (sender, args) => CountLines();
+            itemCountLines.Click += (sender, args) => runProgram();
 
             //  Add the item to the context menu
             menu.Items.Add(itemCountLines);
@@ -40,23 +40,17 @@ namespace ShellExtensions
             //  Return the menu
             return menu;
         }
-
-        private void CountLines()
+        private void runProgram()
         {
-            //  Builder for the output
-            var builder = new StringBuilder();
-
-            //  Go through each fileS
-            foreach (var filePath in SelectedItemPaths)
+            var selectedPath = SelectedItemPaths.FirstOrDefault();
+            if (selectedPath != null)
             {
-                //  Count the lines
-                builder.AppendLine(string.Format("{0} - {1} Lines",
-                  Path.GetFileName(filePath), File.ReadAllLines(filePath).Length));
             }
-
-            //  Show the output
-            MessageBox.Show(builder.ToString());
+            //  Go through each fileS
+            //  Count the lines
         }
+
+      
      
     }
 
