@@ -24,24 +24,22 @@ namespace ShellExtensions
             //  Create the menu strip
             var menu = new ContextMenuStrip();
             
-          
-            //  Create a 'count lines' item
-            var itemCountLines = new ToolStripMenuItem
-            {
-                Text = "DeluxeHexView..."
-            };
+            var deluxeItem = new ToolStripMenuItem();
+            deluxeItem.Text = "DeluxeHexView...";
+            deluxeItem.Image = Properties.Resources.deluxe;
+
 
             //  When we click, we'll call the 'CountLines' function
-            itemCountLines.Click += (sender, args) => runProgram();
+            deluxeItem.Click += (sender, args) => starProlgram();
 
             //  Add the item to the context menu
-            menu.Items.Add(itemCountLines);
+            menu.Items.Add(deluxeItem);
 
             //  Return the menu
             return menu;
         }
 
-        private void runProgram()
+        private void starProlgram()
         {
             var selectedPath = SelectedItemPaths.FirstOrDefault();
             if (selectedPath != null)
