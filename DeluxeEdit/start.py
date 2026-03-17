@@ -1,7 +1,8 @@
 import sys 
 from PyQt6.QtWidgets import QApplication
 from myMainWindow import  MyMainWindow
-from argparse import ArgumentParser,argparse
+from argparse import ArgumentParser
+import argparse
 app = QApplication(sys.argv)
 
 
@@ -13,15 +14,14 @@ parser = ArgumentParser(
                     description='Advanced Text Editor',
                     epilog='Text at the bottom of help')
 
-parser.add_argument('--hex', nargs='+', help='Whether we should do Hex View',required=False,default=False,dest='DoHexView')
-parser.add_argument('--help',help=argparse.SUPPRESS,required=False,dest='DoHelp')
-parser.add_argument('path', nargs='?', help='Whanted path', required=False,default=None)
+parser.add_argument('--hex', nargs='+', help='Whether we should do Hex View',default=False,dest='DoHexView')
+# parser.add_argument('--help',help=argparse.SUPPRESS,required=False,dest='DoHelp')
+parser.add_argument('path', nargs='?', help='Whanted path', default=None)
 parsed = parser.parse_args()
 
 if parsed.path:
     my.autoLoadFile(parsed.path,   parsed.DoHexView)
 
-if parsed.DoHelp:   parser.print_help()
 
 
 sys.exit(app.exec())
