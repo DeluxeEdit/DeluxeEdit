@@ -15,7 +15,6 @@ parser = ArgumentParser(
                     epilog='Text at the bottom of help')
 
 parser.add_argument('--hex', nargs='+', help='Whether we should do Hex View',default=False,dest='DoHexView')
-# parser.add_argument('--help',help=argparse.SUPPRESS,required=False,dest='DoHelp')
 parser.add_argument('path', nargs='?', help='Whanted path', default=None)
 parsed = parser.parse_args()
 
