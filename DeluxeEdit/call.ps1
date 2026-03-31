@@ -10,3 +10,4 @@ New-SelfSignedCertificate `
 
 #Thumbprint                                Subject
 # 92C6FFA8B964586B45B642528315870AEB22C03B  CN=Pierre Signing Cert, C=SE
+Add-AppxPackage -Register .\AppxManifest.xml
