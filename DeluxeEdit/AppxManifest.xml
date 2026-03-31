@@ -4,7 +4,7 @@
   <Properties>
     <DisplayName>DeluxeEdit</DisplayName>
     <PublisherDisplayName>Pierre Signing Cert</PublisherDisplayName>
-    <Description></Description>
+    <Description>Advanced Text Editor</Description>
     <Logo>msix_assets\logo_150x150.png</Logo>
   </Properties>
   <Resources>
@@ -18,7 +18,7 @@
   </Capabilities>
   <Applications>
     <Application Id="PythonMSIXDeluxeEdit" Executable="DeluxeEdit.exe" uap10:RuntimeBehavior="packagedClassicApp" uap10:TrustLevel="mediumIL">
-      <uap:VisualElements DisplayName="Python DeluxeEdit MSIX " Description="DeluxeEdit using MSIX by Python" Square150x150Logo="msix_assets\logo_150x150.png" Square44x44Logo="msix_assets\logo_44x44.png" BackgroundColor="white" />
+      <uap:VisualElements DisplayName="DeluxeEdit" Description="Advanced Text Editor" Square150x150Logo="msix_assets\logo_150x150.png" Square44x44Logo="msix_assets\logo_44x44.png" BackgroundColor="white" />
     </Application>
   </Applications>
 </Package>
