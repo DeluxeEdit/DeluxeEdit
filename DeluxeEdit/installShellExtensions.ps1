@@ -25,6 +25,7 @@ if (Test-Path $installDir=false)
 }
 cd $installDir
 git clone  https://github.com/DeluxeEdit/ShellExtensions.git
+cd ShellExtensions
 dotnet build
 $foundAt=find ".dll" $installDir
 $RegAsmPath= "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\RegAsm.exe"
