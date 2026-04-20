@@ -87,8 +87,7 @@ class MyMainWindow(object):
         
         app = QApplication.instance()
         
-        self. MainWindow.setWindowTitle(app.applicationName+  ' v.' +app.applicationVersion)
-
+        self. MainWindow.setWindowTitle(app.applicationName()+" v."+app.applicationVersion())
         self.MainWindow.resize(798, 600)
         self.tabs=Tabs()
   
