@@ -13,6 +13,8 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 from PyQt6.QtWidgets import QMainWindow
 from PyQt6.QtWidgets import QWidget, QMainWindow,QMenuBar, QMenu,QFileDialog, QStatusBar, QToolBar,QListWidget
 from PyQt6.QtGui import QIcon, QAction
+
+from PyQt6.QtCore import Qt
 from models import TextTabItem, Tabs
 from api import Api
 from util import *
@@ -85,8 +87,11 @@ class MyMainWindow(object):
     def setupUi(self):
         self.MainWindow=QMainWindow()
         
+        # from stackocverflow
         app = QApplication.instance()
-        
+        self.setWindowFlags(self.windowFlags() | Qt.FramelessWindowHint)
+
+        self. MainWindow.title=app.applicationName()+" v."+app.applicationVersion()
         self. MainWindow.setWindowTitle(app.applicationName()+" v."+app.applicationVersion())
         self.MainWindow.resize(798, 600)
         self.tabs=Tabs()
