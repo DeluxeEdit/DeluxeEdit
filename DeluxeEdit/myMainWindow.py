@@ -25,7 +25,9 @@ from appinfo import AppInfo
 
 
 class MyMainWindow(object):
-            
+   def initTabs(self):
+    self.tabs=Tabs()
+
 
     def autoLoadFile(self, filePath, hexView=False):
         self.main.autoLoadFile( filePath,hexView)
@@ -97,10 +99,9 @@ class MyMainWindow(object):
     def setupUi(self):
         self.MainWindow=QMainWindow()
         appInfo=AppInfo()
-        
+        self.initTabs()
         self.MainWindow.setWindowTitle(appInfo.name + "v." +appInfo.version)
         self.MainWindow.resize(798, 600)
-        self.tabs=Tabs()
   
         
         self.MainWindow.setWindowIcon(QtGui.QIcon("deluxeedit.png"))
